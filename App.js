@@ -1,21 +1,96 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function App() {
+import Home from './views/Home';
+import QuienesSomos from './views/QuienesSomos';
+import Clima from './views/Clima';
+import Ciudades from './views/Ciudades';
+
+const HomeScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Home />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const QuienesSomosScreen = () => {
+  return (
+    <QuienesSomos />
+  );
+}
+
+const ClimaScreen = () => {
+  return (
+    <Clima />
+  );
+}
+
+const CiudadesScreen = () => {
+  return (
+    <Ciudades />
+  );
+}
+
+const Tab = createMaterialBottomTabNavigator();
+
+const BarraNavegacion = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      activeColor="#fff"
+      labelStyle={{ fontSize: 12 }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Clima"
+        component={ClimaScreen}
+        options={{
+          tabBarLabel: 'Clima',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="white-balance-sunny" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Ciudades"
+        component={CiudadesScreen}
+        options={{
+          tabBarLabel: 'Ciudades',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="city" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Quienes somos"
+        component={QuienesSomosScreen}
+        options={{
+          tabBarLabel: 'Quienes somos',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account" color={color} size={26} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <BarraNavegacion />
+    </NavigationContainer>
+  );
+}
+
+export default App;
