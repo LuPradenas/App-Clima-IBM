@@ -3,6 +3,9 @@ import { View, ScrollView, StyleSheet } from 'react-native';
 import { Tab, Text, TabView } from 'react-native-elements';
 import Cards from '../components/Cards';
 
+
+import { Linking } from 'react-native';
+
 const QuienesSomos = () => {
   const [index, setIndex] = useState(0);
 
@@ -46,9 +49,7 @@ const QuienesSomos = () => {
             <Cards
               name="ALEJANDRO CALGARO"
               image='foto-ale.webp'
-              description={`Edad: 25 años.
-Ciudad: Chajari, Entre Ríos.
-Analista en Informática Aplicada y Estudiante de Ingeniería en informática.`}
+              description={`Edad: 25 años.Ciudad: Chajari, Entre Ríos.Analista en Informática Aplicada y Estudiante de Ingeniería en informática.`}
               linkedin="https://www.linkedin.com/in/alejandrocalgaro/"
             />
 
@@ -62,21 +63,34 @@ Analista en Informática Aplicada y Estudiante de Ingeniería en informática.`}
             <Cards
               name="PABLO RIVERA"
               image='foto-pablo.webp'
-              description="Esta es la descripción"
-              linkedin="https://www.linkedin.com/in/"
+              description={`Edad: 36 años.Ciudad: Buenos Aires, CABA.Profesor de Educación Física y Programador FullStack.`}
+              linkedin="https://www.linkedin.com/in/pablo-rivera-414833216/"
             />
           </ScrollView>
         </TabView.Item>
 
         <TabView.Item style={styles.solution}>
-          <Text>Acá iría la explicación de la solución</Text>
+          <Text>Esta solución fue desarrollada, como proyecto grupal final, para ser presentada en "Curso de especialización en desarrollo mobile - Codo a Codo | IBM Skillsbuild".</Text>
         </TabView.Item>
 
         <TabView.Item style={styles.design}>
-          <>
-            <Text>Se realizó el wireframe de cada pantalla en Balsamiq y luego los mockups en Figma.</Text>
-            <Text>Acá iría un botón que nos lleve al link a Balsamiq y otro al link de Figma</Text>
-          </>
+        
+            <Text>El wireframe de cada pantalla  de esta solucíón fue desarrollada en Balsamiq y mockups en Figma  </Text>
+            <Button
+        title="Balsamiq"
+        onPress={() =>  Linking.openURL('https://balsamiq.com/')}
+
+        />
+        
+
+      
+          <Button
+        title="Figma"
+        onPress={() => Linking.openURL('https://www.figma.com/')}
+        
+      
+          />
+          
         </TabView.Item>
       </TabView>
     </>
