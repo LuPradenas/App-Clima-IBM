@@ -1,7 +1,7 @@
 // import firebase from "firebase/app"
 
 // const firebaseConfig = {
-//     apiKey: "AIzaSyAmWV4oOi868JQJ_YOlqNXqLIOjEb2Z5Bw",
+//     apiKey: process.env.FIREBASE_KEY,
 //     authDomain: "climapp-9d5c9.firebaseapp.com",
 //     projectId: "climapp-9d5c9",
 //     storageBucket: "climapp-9d5c9.appspot.com",
