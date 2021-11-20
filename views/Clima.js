@@ -17,7 +17,7 @@ const Clima = ({city}) => {
     useEffect(() => {
         const getWeather = async () => {
             const instance = axios.create({
-                baseURL: `http://api.openweathermap.org/data/2.5/weather?q=${ciudadEj[2]}&appid=52a6ef5babf065f56a4ba16a1ad07f05`,
+                baseURL: `http://api.openweathermap.org/data/2.5/weather?q=${ciudadEj[2]}&appid=${process.env.OPENWEATHER_KEY}`,
                 params: { 'units': 'metric', 'lang': 'es'}
             });
 
