@@ -18,7 +18,7 @@ const Cards = (props) => {
  
               <Card.Image
                 source={require(`../img/${image}`)}
-                style={{ height: 200,  borderRadius: 50 }}
+                style={{ height: 200 }}
                 resizeMode="center"   // center o contain
               />
 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10
-  },
+  }
 
 });
 
