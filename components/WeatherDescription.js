@@ -1,42 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
 import { Card } from 'react-native-paper';
 import { COLORS } from '../utils/colors';
 
 const WeatherDescription = ({weatherData}) => {
     if(Object.keys(weatherData).length === 0) return null;
-    const [description, setDescription] = useState([]);
+    const [description, setDescription] = useState('');
+    const [iconUri, setIconUri] = useState('');
 
     useEffect(() => {
-        const datos = weatherData.weather.map( e => {
-           return {
-               description: e.description,
-               main: e.main,
-               icon: e.icon,
-               id: e.id
-            } 
-        } );
-
-        setDescription(datos);
-        
-
+        setIconUri(`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`)
+        setDescription(weatherData.weather[0].description);
     }, [])
+
+
     return (
         <View>
              <Card style={styles.card}>
-                <Card.Content>
-                 {
-                 description.map( item => {
-                     return (
-                     <View style={styles.cardItem} key={item.id}>
+                <Card.Content style={{ flexDirection: 'row' }}>
+                     <View style={styles.cardItem}>
                          <Image 
                             style={styles.logo}
-                            source={{ uri: `http://openweathermap.org/img/wn/${item.icon}@2x.png`}}
+                            source={{ uri: iconUri }}
                          />
-                         <Text style={{color:'#fff', fontSize:20}}>{item.description}</Text>
-                     </View>)
-                })
-                }
+                         <Text style={styles.numbers}>{Number.parseFloat(weatherData.main.temp).toFixed(1)} º C</Text>
+                         <Text style={{color:'#fff', fontSize:20}}>{description}</Text>
+                     </View>
+
                 </Card.Content>
             </Card>
         </View>
@@ -49,20 +39,26 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginVertical:10,
         borderRadius: 8, 
-        alignItems:'center'    
+        alignItems:'center',
     },
     cardItem:{
         backgroundColor: COLORS.secondaryVariantGradient,
         textAlign:'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         paddingVertical: 10,
         paddingHorizontal:10,
+        marginHorizontal: 3,
         borderRadius: 8,
     },
     logo: {
-        width: 66,
-        height: 58,
+        width: 90,
+        height: 75,
+    },
+    numbers:{
+        fontSize:30,
+        fontWeight: 'bold',
+        color: '#fff'
     }
 })
 
