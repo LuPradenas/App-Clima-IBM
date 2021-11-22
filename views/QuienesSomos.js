@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, Button, Linking } from 'react-native';
-import { Tab, Text, TabView } from 'react-native-elements';
+import { View, ScrollView, StyleSheet, Linking } from 'react-native';
+import { Tab, Text, TabView, Button, Icon } from 'react-native-elements';
 import Cards from '../components/Cards';
 
 const QuienesSomos = () => {
@@ -39,28 +39,28 @@ const QuienesSomos = () => {
             <Cards
               name="IARA BAYA VARGAS"
               image='foto-iara.webp'
-              description={`Edad: 24 años.\nCiudad: Buenos Aires, CABA.\nProgramadora Web Fullstack.`}
+              description={`Edad: 24 años.\nCiudad: Capital Federal, Buenos Aires.\nOcupación: Programadora Web Fullstack.`}
               linkedin="https://www.linkedin.com/in/iarabayavargas/"
             />
 
             <Cards
               name="ALEJANDRO CALGARO"
               image='foto-ale.webp'
-              description={`Edad: 25 años.\nCiudad: Chajari, Entre Ríos.\nAnalista en Informática Aplicada y \nEstudiante de Ingeniería en informática.`}
+              description={`Edad: 25 años.\nCiudad: Chajari, Entre Ríos.\nOcupación: Analista en Informática Aplicada y \nEstudiante de Ingeniería en informática.`}
               linkedin="https://www.linkedin.com/in/alejandrocalgaro/"
             />
 
             <Cards
               name="LUCIANA PRADENAS"
               image='foto-luciana.webp'
-              description={`Edad: 23.\nCiudad: Capital Federal, Buenos Aires.\nEstudiante de Analista en Sistemas.`}
+              description={`Edad: 23.\nCiudad: Capital Federal, Buenos Aires.\nOcupación: Estudiante de Analista en Sistemas.`}
               linkedin="https://www.linkedin.com/in/luciana-pradenas/"
             />
 
             <Cards
               name="PABLO RIVERA"
               image='foto-pablo.webp'
-              description={`Edad: 36 años.\nCiudad: Buenos Aires, CABA.\nProfesor de Educación Física y \nProgramador FullStack.`}
+              description={`Edad: 36 años.\nCiudad: Buenos Aires, CABA.\nOcupación: Profesor de Educación Física y \nProgramador FullStack.`}
               linkedin="https://www.linkedin.com/in/pablo-rivera-414833216/"
             />
           </ScrollView>
@@ -82,12 +82,28 @@ const QuienesSomos = () => {
             
             <View style={styles.desing_figma}>
               <Button 
+                icon={
+                  <Icon
+                    name="figma"
+                    type="feather"
+                    color="#ffffff"
+                    iconStyle={{ marginRight: 5 }}
+                  />
+                }
                 title="Figma"
                 onPress={() => Linking.openURL('https://www.figma.com/file/PS6r0dRUXhkTrHi43OYEG5/App-Clima-IBM')}
               />
             </View>
 
             <Button
+              icon={
+                <Icon
+                  name="logo-github"
+                  type="ionicon"
+                  color="#ffffff"
+                  iconStyle={{ marginRight: 5 }}
+                />
+              }
               title="Github"
               onPress={() => Linking.openURL('https://github.com/LuPradenas/App-Clima-IBM/tree/developer')}
             />
