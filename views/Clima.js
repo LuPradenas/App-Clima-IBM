@@ -17,7 +17,7 @@ const Clima = ({city}) => {
     useEffect(() => {
         const getWeather = async () => {
             const instance = axios.create({
-                baseURL: `http://api.openweathermap.org/data/2.5/weather?q=${ciudadEj[2]}&appid=${process.env.OPENWEATHER_KEY}`,
+                baseURL: `http://api.openweathermap.org/data/2.5/weather?q=${ciudadEj[2]}&appid=${process.env.OPENWEATHER_API}`,
                 params: { 'units': 'metric', 'lang': 'es'}
             });
 
@@ -35,34 +35,35 @@ const Clima = ({city}) => {
 
     return (
         <ScrollView>
-            <Appbar.Header>
+            <Appbar.Header style={{backgroundColor: "#007AFF"}}>
                 <Appbar.Content title="Clima" subtitle={`Actualizacion de ${ciudadEj[2]}`} />
             </Appbar.Header>
-            <View>
+            {/* <View>
                 <Text>
                     {weatherData? 'Datos cargados' : 'Cargando datos...'}
                 </Text>
+            </View> */}
+            <View>
+                <WeatherDescription weatherData={weatherData}/>
             </View>
 
-            <View style={styles.detailsCard}>
+            <View>
                 <WeatherDetails weatherData={weatherData}/>
             </View>
 
-            <WeatherDescription weatherData={weatherData}/>
+           
 
-            <View>
+            {/* <View>
                 <ModalMaps 
                     weatherData={weatherData}
                 />                 
-            </View>
+            </View> */}
         </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
-    detailsCard:{
-        marginBottom: 10
-    },
+
 })
 
 export default Clima
