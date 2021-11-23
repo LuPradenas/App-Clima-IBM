@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
-import Maps from './Maps'
+import Maps from './Maps';
+import { FAB } from "react-native-paper";
 
 const ModalMaps = ({weatherData}) => {
   if(Object.keys(weatherData).length === 0) return null;
 
-  const {coord} = weatherData;
-  const {lat, lon} = coord;
+  const {lat, lon} = weatherData.coord;
   const [modalVisible, setModalVisible] = useState(false);
   
   return (
@@ -27,23 +27,24 @@ const ModalMaps = ({weatherData}) => {
               lat = {lat}
               lon = {lon}
             />
-
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
+            <FAB
+              style={styles.fab}
+              small
+              icon="close-circle"
               onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Cerrar</Text>
-            </Pressable>
+              label='Cerrar Mapa'
+            />
           </View>
         </View>
       </Modal>
       
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
+      <FAB
+        style={styles.fab}
+        small
+        icon="earth"
         onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Abrir mapa</Text>
-      </Pressable>
+        label='Ver mapa'
+      />
     </View>
   );
 };
@@ -70,25 +71,14 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
   modalText: {
     marginBottom: 15,
     textAlign: "center"
+  },
+  fab:{
+    backgroundColor: '#0071d4',
+    marginTop:5,
+    marginBottom:10
   }
 });
 
