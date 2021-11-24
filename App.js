@@ -2,8 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { firebaseApp } from './utils/firebase';
-
 import Home from './views/Home';
 import QuienesSomos from './views/QuienesSomos';
 import Clima from './views/Clima';

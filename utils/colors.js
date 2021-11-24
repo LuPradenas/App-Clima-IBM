@@ -16,3 +16,5 @@ export const COLORS = {
     error: "#b0253c",
     separator: "#859699",
   };
+
+  //"#e7eff6" primaryVarient
