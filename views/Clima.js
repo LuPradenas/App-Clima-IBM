@@ -71,7 +71,6 @@ const Clima = ({city}) => {
             <View>
                 <WeatherWeekTable weekWeatherData={weekWeatherData}/>
             </View>
-            
                 <ModalMaps 
                     weatherData={weatherData}
                 />                 
