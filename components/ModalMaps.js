@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
   },
   modalView: {
     margin: 20,
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
   },
   fab:{
     backgroundColor: '#0071d4',
-    marginTop:5,
+    marginTop:10,
     marginBottom:10
   }
 });
