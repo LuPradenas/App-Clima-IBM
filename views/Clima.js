@@ -7,6 +7,7 @@ import WeatherDescription from '../components/WeatherDescription';
 import ModalMaps from '../components/ModalMaps';
 import { COLORS } from '../utils/colors';
 import WeatherWeekTable from '../components/WeatherWeekTable';
+import { API_KEY } from '@env';
 
 const Clima = ({city}) => {
     const [ cityName, setCityName ] = useState('');
@@ -19,7 +20,7 @@ const Clima = ({city}) => {
     useEffect(() => {
         const getWeather = async () => {
             const instance = axios.create({
-                baseURL: `http://api.openweathermap.org/data/2.5/weather?q=${ciudadEj[2]}&appid=${process.env.OPENWEATHER_KEY}`,
+                baseURL: `http://api.openweathermap.org/data/2.5/weather?q=${ciudadEj[2]}&appid=${API_KEY}`,
                 params: { 'units': 'metric', 'lang': 'es'}
             });
 
@@ -32,7 +33,7 @@ const Clima = ({city}) => {
 
         const getWeekWeather = async () => {
             const instance = axios.create({
-                baseURL: `http://api.openweathermap.org/data/2.5/forecast?q=${ciudadEj[2]}&appid=${process.env.OPENWEATHER_KEY}`,
+                baseURL: `http://api.openweathermap.org/data/2.5/forecast?q=${ciudadEj[2]}&appid=${API_KEY}`,
                 params: { 'units': 'metric', 'lang': 'es'}
             });
             const res = await instance.get();
