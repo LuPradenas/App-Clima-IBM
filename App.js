@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { firebaseApp } from './utils/firebase';
 
 import Home from './views/Home';
 import QuienesSomos from './views/QuienesSomos';
@@ -37,7 +38,7 @@ const Tab = createMaterialBottomTabNavigator();
 const BarraNavegacion = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Ciudades"
       activeColor="#fff"
       labelStyle={{ fontSize: 12 }}
     >
@@ -65,7 +66,7 @@ const BarraNavegacion = () => {
         name="Ciudades"
         component={CiudadesScreen}
         options={{
-          tabBarLabel: 'Ciudades',
+          tabBarLabel: 'Buscador',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="city" color={color} size={26} />
           ),
