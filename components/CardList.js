@@ -28,18 +28,18 @@ const CardList = ({ city, eliminarCity}) => {
     Snow: (
       <FontAwesome5
         name="snowflake"
-        size={55}
+        size={30}
         color={COLORS.secondaryVariant}
       />
     ),
-    Clear: <Ionicons name="sunny" size={55} color={COLORS.secondaryVariant} />,
+    Clear: <Ionicons name="sunny" size={30} color={COLORS.secondaryVariant} />,
     Clouds: (
-      <Ionicons name="cloudy" size={55} color={COLORS.secondaryVariant} />
+      <Ionicons name="cloudy" size={30} color={COLORS.secondaryVariant} />
     ),
     Rain: (
       <FontAwesome5
         name="cloud-sun-rain"
-        size={55}
+        size={30}
         color={COLORS.secondaryVariant}
       />
     ),
@@ -53,7 +53,7 @@ const CardList = ({ city, eliminarCity}) => {
         }
       >
         <View style={styles.cardCityDetails}>
-          <Text style={{ fontSize: 30, color: COLORS.onPrimary }}>
+          <Text style={{ fontSize: 25, color: COLORS.onPrimary }}>
             {!cityWeather.error ? city : `${cityWeather.error}:${city}`}
           </Text>
         </View>
@@ -74,7 +74,7 @@ const CardList = ({ city, eliminarCity}) => {
         <View style={styles.cardTempDetails}>
           <View>
             <Text
-              style={{ fontSize: 45, color: COLORS.onPrimary, marginTop: 10 }}
+              style={{ fontSize: 30, color: COLORS.onPrimary, marginTop: 10 }}
             >
               {!cityWeather.error ? `${temperature} °` : null}
             </Text>
