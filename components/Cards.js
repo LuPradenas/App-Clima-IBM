@@ -17,7 +17,7 @@ const Cards = (props) => {
             <Card.Divider />
  
               <Card.Image
-                source={require(`../img/${image}`)}
+                source={{uri: image}}
                 style={{ height: 200 }}
                 resizeMode="center"   // center o contain
               />
