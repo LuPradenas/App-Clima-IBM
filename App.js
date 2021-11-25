@@ -2,10 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Home from './views/Home';
-import QuienesSomos from './views/QuienesSomos';
-import Clima from './views/Clima';
-import Ciudades from './views/Ciudades';
+import Home from './src/views/Home';
+import QuienesSomos from './src/views/QuienesSomos';
+import Clima from './src/views/Clima';
+import Ciudades from './src/views/Ciudades'
 
 const HomeScreen = () => {
   return (

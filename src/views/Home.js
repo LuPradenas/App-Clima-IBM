@@ -7,7 +7,7 @@ const Home = () => {
         <Animatable.View animation="fadeIn" style={styles.container}>
             <Image 
                 style={styles.img_home}
-                source={require('../img/img_home.png')}
+                source={require('../assets/img/img_home.png')}
             />
 
             <Text style={styles.titulo}>Descripcion</Text>
