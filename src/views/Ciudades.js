@@ -99,7 +99,7 @@ const Ciudades = (props) => {
               marginTop: "15%",
             }}
           >
-            AGREGUE CIUDADES PARA MOSTRAR EL CLIMA.
+            AGREGUE CIUDADES PARA MOSTRAR EL CLIMA
           </Text>
         )}
         <FlatList

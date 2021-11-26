@@ -54,7 +54,7 @@ const CardList = ({ city, eliminarCity, navigation}) => {
         onPress={()=> navigation.jumpTo('Clima', { city } ) } // al precionar una card se cambia a la vista de Clima
       >
         <View style={styles.cardCityDetails}>
-          <Text style={{ fontSize: 25, color: COLORS.onPrimary }}>
+          <Text style={{ fontSize: 20, color: COLORS.onPrimary }}>
             {!cityWeather.error ? city : `${cityWeather.error}:${city}`}
           </Text>
         </View>
@@ -77,7 +77,7 @@ const CardList = ({ city, eliminarCity, navigation}) => {
         <View style={styles.cardTempDetails}>
           <View>
             <Text
-              style={{ fontSize: 30, color: COLORS.onPrimary, marginTop: 10 }}
+              style={{ fontSize: 25, color: COLORS.onPrimary, marginTop: 10 }}
             >
               {!cityWeather.error ? `${temperature} °` : null}
             </Text>
