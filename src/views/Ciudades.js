@@ -15,11 +15,13 @@ import CardList from "../components/CardList";
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const Ciudades = () => {
+const Ciudades = (props) => {
   const [citiesList, setCityList] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   //const [location, setLocation] = useState(null);
+  const { navigation } = props;
 
+  
   useEffect(() => {
     const obtenerCitiesStorage = async () => {
       try {
@@ -103,7 +105,7 @@ const Ciudades = () => {
           style={styles.cityList}
           data={citiesList}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => <CardList city={item} eliminarCity={eliminarCity} />}
+          renderItem={({ item }) => <CardList navigation={navigation} city={item} eliminarCity={eliminarCity} />}
           keyExtractor={({ item }) => item}
         />
       </SafeAreaView>

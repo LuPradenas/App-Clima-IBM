@@ -7,29 +7,29 @@ import QuienesSomos from '../views/QuienesSomos';
 import Clima from '../views/Clima';
 import Ciudades from '../views/Ciudades'
 
-const HomeScreen = () => {
-  return (
-    <Home />
-  );
-}
+// const HomeScreen = () => {
+//   return (
+//     <Home />
+//   );
+// }
 
-const QuienesSomosScreen = () => {
-  return (
-    <QuienesSomos />
-  );
-}
+// const QuienesSomosScreen = () => {
+//   return (
+//     <QuienesSomos />
+//   );
+// }
 
-const ClimaScreen = () => {
-  return (
-    <Clima />
-  );
-}
+// const ClimaScreen = () => {
+//   return (
+//     <Clima />
+//   );
+// }
 
-const CiudadesScreen = () => {
-  return (
-    <Ciudades />
-  );
-}
+// const CiudadesScreen = () => {
+//   return (
+//     <Ciudades />
+//   );
+// }
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -42,7 +42,7 @@ const BarraNavegacion = () => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={Home}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
@@ -50,19 +50,10 @@ const BarraNavegacion = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name="Clima"
-        component={ClimaScreen}
-        options={{
-          tabBarLabel: 'Clima',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="white-balance-sunny" color={color} size={26} />
-          ),
-        }}
-      />
+
       <Tab.Screen
         name="Ciudades"
-        component={CiudadesScreen}
+        component={Ciudades}
         options={{
           tabBarLabel: 'Buscador',
           tabBarIcon: ({ color }) => (
@@ -70,9 +61,21 @@ const BarraNavegacion = () => {
           ),
         }}
       />
+
+      <Tab.Screen
+        name="Clima"
+        component={Clima}
+        options={{
+          tabBarLabel: 'Clima',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="white-balance-sunny" color={color} size={26} />
+          ),
+        }}
+      />
+
       <Tab.Screen
         name="Quienes somos"
-        component={QuienesSomosScreen}
+        component={QuienesSomos}
         options={{
           tabBarLabel: 'Quienes somos',
           tabBarIcon: ({ color }) => (

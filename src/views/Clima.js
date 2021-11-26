@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Appbar } from 'react-native-paper';
+import { Appbar, Button } from 'react-native-paper';
 import axios from 'axios';
 import WeatherDetails from '../components/WeatherDetails'
 import WeatherDescription from '../components/WeatherDescription';
@@ -9,68 +9,106 @@ import { COLORS } from '../utils/colors';
 import WeatherWeekTable from '../components/WeatherWeekTable';
 import { API_KEY } from '@env';
 
-const Clima = ({city}) => {
+const Clima = (props) => {
     const [ cityName, setCityName ] = useState('');
     const [ weatherData, setWeatherData ] = useState('');
     const [ weekWeatherData, setWeekWeatherData ] = useState([]);
     // const [ loading, setLoading ] = useState(false);
+    const { route, navigation } =  props;
+    // const ciudadEj = ['Buenos Aires', 'La Plata', 'Rosario']
 
-    const ciudadEj = ['Buenos Aires', 'La Plata', 'Rosario']
+
 
     useEffect(() => {
-        const getWeather = async () => {
-            const instance = axios.create({
-                baseURL: `http://api.openweathermap.org/data/2.5/weather?q=${ciudadEj[2]}&appid=${API_KEY}`,
-                params: { 'units': 'metric', 'lang': 'es'}
-            });
+        if(props?.route?.params?.city){
 
-            const res = await instance.get();
-            const {weather, main, coord, clouds} = res.data
-            setWeatherData({weather, main, coord, clouds});
+            console.log(props);
+            console.log(route.params.city);
+            setCityName(route.params.city);
+
+            const getWeather = async () => {
+                const instance = axios.create({
+                    baseURL: `http://api.openweathermap.org/data/2.5/weather`,
+                    params: { 
+                        units: 'metric',
+                        lang: 'es',
+                        q: `${getCityWithoutSpecialChars(cityName)},ar`,
+                        appid: API_KEY
+                    }
+                });
+    
+                const res = await instance.get();
+                const {weather, main, coord, clouds} = res.data
+                setWeatherData({weather, main, coord, clouds});
+            }
+    
+            const getWeekWeather = async () => {
+                const instance = axios.create({
+                    baseURL: `http://api.openweathermap.org/data/2.5/forecast`,
+                    params: { 
+                        units: 'metric',
+                        lang: 'es',
+                        q: `${getCityWithoutSpecialChars(cityName)},ar`,
+                        appid: API_KEY
+                    }
+                });
+                const res = await instance.get();
+                setWeekWeatherData(res.data.list);
+            }
+    
+            getWeather();
+            getWeekWeather();
         }
 
-        const getWeekWeather = async () => {
-            const instance = axios.create({
-                baseURL: `http://api.openweathermap.org/data/2.5/forecast?q=${ciudadEj[2]}&appid=${API_KEY}`,
-                params: { 'units': 'metric', 'lang': 'es'}
-            });
-            const res = await instance.get();
-            setWeekWeatherData(res.data.list);
-        }
+    }, [props]);
 
-        getWeather();
-        getWeekWeather();
-
-    }, []);
+    const getCityWithoutSpecialChars = (city) =>{
+        return city.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    }
 
     const date = new Date();
     const options = { weekday: 'long',year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }
 
     return (
         <ScrollView style={styles.container}>
-            <Appbar.Header style={styles.bar}>
-                <Appbar.Content 
-                title={`Clima de ${ciudadEj[2]}`} 
-                titleStyle={styles.title}
-                subtitle={` ${date.toLocaleString('es-ES', options)} hs`} 
-                subtitleStyle={styles.subtitle}
-                />
-            </Appbar.Header>
+            {cityName && props? 
+                <>
+                    <Appbar.Header style={styles.bar}>
+                    <Appbar.Content 
+                    title={`Clima de ${cityName}`} 
+                    titleStyle={styles.title}
+                    subtitle={` ${date.toLocaleString('es-ES', options)} hs`} 
+                    subtitleStyle={styles.subtitle}
+                    />
+                    </Appbar.Header>
+                    <Button onPress={()=> {
+                    props.navigation.jumpTo('Ciudades')
+                    }}>Volver</Button>
 
-            <View>
-                <WeatherDescription weatherData={weatherData}/>
-            </View>
+                    <View>
+                        <WeatherDescription weatherData={weatherData}/>
+                    </View>
 
-            <View>
-                <WeatherDetails weatherData={weatherData}/>
-            </View>
+                    <View>
+                        <WeatherDetails weatherData={weatherData}/>
+                    </View>
 
-            <View>
-                <WeatherWeekTable weekWeatherData={weekWeatherData}/>
-            </View>
-                <ModalMaps 
-                    weatherData={weatherData}
-                />                 
+                    <View>
+                        <WeatherWeekTable weekWeatherData={weekWeatherData}/>
+                    </View>
+                        <ModalMaps 
+                            weatherData={weatherData}
+                        /> 
+                </>          
+            :
+                <>
+                <Text>Tienes que seleccionar una ciudad de la lista</Text>
+                <Button onPress={()=> {
+                    props.navigation.jumpTo('Ciudades')
+                    }}>Volver</Button>
+                </>
+            }
+                  
         </ScrollView>
     );
 };

@@ -10,9 +10,9 @@ import { COLORS } from '../utils/colors'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import { Ionicons } from '@expo/vector-icons'
-import getCityWeather from './getCityWeather'
+import getCityWeather from '../services/getCityWeather'
 
-const CardList = ({ city, eliminarCity}) => {
+const CardList = ({ city, eliminarCity, navigation}) => {
   //const getData = obtenerDatos().then( data => console.log(data))
   const cityWeather = getCityWeather(city)
   const temperature = cityWeather?.main?.temp.toFixed()
@@ -57,6 +57,12 @@ const CardList = ({ city, eliminarCity}) => {
             {!cityWeather.error ? city : `${cityWeather.error}:${city}`}
           </Text>
         </View>
+        <Pressable
+          onPress={()=> navigation.jumpTo('Clima', { city } ) }
+        >
+          <Text style={{color: 'white'}}>Ver Clima</Text>
+        </Pressable>
+
         <View style={styles.cardIcon}>
           {!cityWeather.error
             ? weatherConditionMap[mainWeatherCondition]
@@ -71,6 +77,7 @@ const CardList = ({ city, eliminarCity}) => {
             {!cityWeather.error ? condition1 : null}
           </Text>
         </View>
+
         <View style={styles.cardTempDetails}>
           <View>
             <Text
@@ -80,6 +87,7 @@ const CardList = ({ city, eliminarCity}) => {
             </Text>
           </View>
         </View>
+    
         <Pressable>
           <AntDesign
             name="close"

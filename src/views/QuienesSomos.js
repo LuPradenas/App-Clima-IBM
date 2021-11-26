@@ -38,28 +38,28 @@ const QuienesSomos = () => {
           <ScrollView>
             <Cards
               name="IARA BAYA VARGAS"
-              image='foto-iara.webp'
+              image= 'https://media-exp1.licdn.com/dms/image/C4E03AQHTo-jwBGnWDQ/profile-displayphoto-shrink_800_800/0/1570761252563?e=1643241600&v=beta&t=DU081ahHU3nhuakzppm3QwGFz5GxQVA76Mh86YSc3QY'
               description={`Edad: 24 años.\nCiudad: Capital Federal, Buenos Aires.\nOcupación: Programadora Web Fullstack.`}
               linkedin="https://www.linkedin.com/in/iarabayavargas/"
             />
 
             <Cards
               name="ALEJANDRO CALGARO"
-              image='foto-ale.webp'
+              image='https://media-exp1.licdn.com/dms/image/C4D03AQF-v5f46TJMaQ/profile-displayphoto-shrink_800_800/0/1637862693494?e=1643241600&v=beta&t=VQKpr8gdkl4phuyVDdpol0C-se2cdFQFZXjBtRMuVpI'
               description={`Edad: 25 años.\nCiudad: Chajari, Entre Ríos.\nOcupación: Analista en Informática Aplicada y \nEstudiante de Ingeniería en informática.`}
               linkedin="https://www.linkedin.com/in/alejandrocalgaro/"
             />
 
             <Cards
               name="LUCIANA PRADENAS"
-              image='foto-luciana.webp'
+              image='https://media-exp1.licdn.com/dms/image/C4E03AQGg6F56yJPHLw/profile-displayphoto-shrink_800_800/0/1581276912932?e=1643241600&v=beta&t=9pz1Yl1vMqDSRuGmXZlQyhV7Ax84Te6hqNrN6wLmhgE'
               description={`Edad: 23.\nCiudad: Capital Federal, Buenos Aires.\nOcupación: Estudiante de Analista en Sistemas.`}
               linkedin="https://www.linkedin.com/in/luciana-pradenas/"
             />
 
             <Cards
               name="PABLO RIVERA"
-              image='foto-pablo.webp'
+              image='https://media-exp1.licdn.com/dms/image/C4D03AQEW9rL-zCx2Cg/profile-displayphoto-shrink_800_800/0/1628527453753?e=1643241600&v=beta&t=sljCcXBiX2kY0DwluWoZpZVPw2uyJL1QETDGc7tV3jg'
               description={`Edad: 36 años.\nCiudad: Buenos Aires, CABA.\nOcupación: Profesor de Educación Física y \nProgramador FullStack.`}
               linkedin="https://www.linkedin.com/in/pablo-rivera-414833216/"
             />
