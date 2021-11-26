@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, View, Text, StyleSheet } from 'react-native'
 import * as Animatable from 'react-native-animatable';
 
-const Home = () => {
+const Inicio = () => {
     return (
         <Animatable.View animation="fadeIn" style={styles.container}>
             <Image 
@@ -20,7 +20,8 @@ const Home = () => {
                                             en las cuales podrás navegar dentro de la app, ya sea para conocer
                                             información sobre nosotros y la app, para registrar tu listado de 
                                             ciudades o para consultar el mapa y estado del clima en la ciudad 
-                                            que desees.</Text>
+                                            que desees. Al cargar tus ciudades, podrás presionar sobre ellas para
+                                            consultar el clima actualizado al momento y con más detalles.</Text>
         </Animatable.View>
     )
 }
@@ -36,21 +37,21 @@ const styles = StyleSheet.create({
     img_home: {
         width: 128,
         height: 128,
-        marginBottom: 20
+        marginBottom: 15
     },
 
     titulo: {
-        fontSize: 20,
+        fontSize: 18,
         marginBottom: 5
     },
 
     descripcion: {
-        fontSize: 16,
-        marginBottom: 40,
+        fontSize: 15,
+        marginBottom: 25,
         marginHorizontal: 20,
         textAlign: 'center'
     }
 
 });
 
-export default Home
+export default Inicio

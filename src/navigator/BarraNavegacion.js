@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Home from '../views/Home';
+import Inicio from '../views/Inicio';
 import QuienesSomos from '../views/QuienesSomos';
 import Clima from '../views/Clima';
 import Ciudades from '../views/Ciudades'
@@ -36,15 +36,15 @@ const Tab = createMaterialBottomTabNavigator();
 const BarraNavegacion = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Ciudades"
+      initialRouteName="Inicio"
       activeColor="#fff"
       labelStyle={{ fontSize: 12 }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Inicio"
+        component={Inicio}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Inicio',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
@@ -55,7 +55,7 @@ const BarraNavegacion = () => {
         name="Ciudades"
         component={Ciudades}
         options={{
-          tabBarLabel: 'Buscador',
+          tabBarLabel: 'Ciudades',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="city" color={color} size={26} />
           ),

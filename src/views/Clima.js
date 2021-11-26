@@ -15,9 +15,6 @@ const Clima = (props) => {
     const [ weekWeatherData, setWeekWeatherData ] = useState([]);
     // const [ loading, setLoading ] = useState(false);
     const { route, navigation } =  props;
-    // const ciudadEj = ['Buenos Aires', 'La Plata', 'Rosario']
-
-
 
     useEffect(() => {
         if(props?.route?.params?.city){
@@ -82,8 +79,8 @@ const Clima = (props) => {
                     />
                     </Appbar.Header>
                     <Button onPress={()=> {
-                    props.navigation.jumpTo('Ciudades')
-                    }}>Volver</Button>
+                        props.navigation.jumpTo('Ciudades')
+                        }}>Volver</Button>
 
                     <View>
                         <WeatherDescription weatherData={weatherData}/>
@@ -101,12 +98,15 @@ const Clima = (props) => {
                         /> 
                 </>          
             :
-                <>
-                <Text>Tienes que seleccionar una ciudad de la lista</Text>
-                <Button onPress={()=> {
-                    props.navigation.jumpTo('Ciudades')
-                    }}>Volver</Button>
-                </>
+                
+                <View style={styles.container_mensaje}>
+                    <Text style={styles.mensaje}>Tienes que seleccionar una ciudad de la lista</Text>
+                    <Button 
+                        onPress={()=> {
+                            props.navigation.jumpTo('Ciudades')
+                        }}>Volver</Button>
+                </View>
+    
             }
                   
         </ScrollView>
@@ -125,6 +125,13 @@ const styles = StyleSheet.create({
     },
     subtitle:{
         fontSize:15
+    },
+    container_mensaje: {
+        marginTop: 10,
+        alignItems: 'center',
+    },
+    mensaje: {
+        fontSize: 16
     }
 })
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
+  Platform,
   Text,
   TouchableOpacity,
   SafeAreaView,
@@ -118,6 +119,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.primaryVariant,
     alignItems: "center",
+    marginTop: Platform.OS === 'ios' ?  40  : 20 ,
   },
   safeContainer: {
     flex: 1,
