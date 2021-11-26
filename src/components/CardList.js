@@ -51,18 +51,14 @@ const CardList = ({ city, eliminarCity, navigation}) => {
         style={
           !cityWeather.error ? styles.cardContainer : styles.cardContainerError
         }
+        onPress={()=> navigation.jumpTo('Clima', { city } ) } // al precionar una card se cambia a la vista de Clima
       >
         <View style={styles.cardCityDetails}>
           <Text style={{ fontSize: 25, color: COLORS.onPrimary }}>
             {!cityWeather.error ? city : `${cityWeather.error}:${city}`}
           </Text>
         </View>
-        <Pressable
-          onPress={()=> navigation.jumpTo('Clima', { city } ) }
-        >
-          <Text style={{color: 'white'}}>Ver Clima</Text>
-        </Pressable>
-
+        
         <View style={styles.cardIcon}>
           {!cityWeather.error
             ? weatherConditionMap[mainWeatherCondition]

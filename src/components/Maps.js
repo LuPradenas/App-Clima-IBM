@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MapView, {Marker, ProviderPropType} from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
-export default function Maps(props) {
+const Maps = (props) => {
   
   const {lat, lon} = props;
   const {width, height} = Dimensions.get('window');
@@ -41,10 +41,6 @@ export default function Maps(props) {
   );
 }
 
-Maps.propTypes = {
-  provider: ProviderPropType,
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -57,3 +53,5 @@ const styles = StyleSheet.create({
     height: 500,  //Dimensions.get('window').height,
   },
 });
+
+export default Maps;
