@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Platform, ScrollView } from 'react-native';
 import { Appbar, Button } from 'react-native-paper';
 import axios from 'axios';
 import WeatherDetails from '../components/WeatherDetails'
@@ -15,8 +15,11 @@ const Clima = (props) => {
     const [ weekWeatherData, setWeekWeatherData ] = useState([]);
     // const [ loading, setLoading ] = useState(false);
     const { route, navigation } =  props;
+    const [coordinates , setCoordinates ] = useState([]);  
 
     useEffect(() => {
+        setCoordinates(route.params.coords)
+
         if(props?.route?.params?.city){
 
             console.log(props);
@@ -94,7 +97,7 @@ const Clima = (props) => {
                         <WeatherWeekTable weekWeatherData={weekWeatherData}/>
                     </View>
                         <ModalMaps 
-                            weatherData={weatherData}
+                            coordinates={coordinates}
                         /> 
                 </>          
             :
@@ -127,7 +130,7 @@ const styles = StyleSheet.create({
         fontSize:15
     },
     container_mensaje: {
-        marginTop: 10,
+        marginTop: Platform.OS === 'ios' ?  60  : 50 ,
         alignItems: 'center',
     },
     mensaje: {

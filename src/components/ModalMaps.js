@@ -3,10 +3,11 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import Maps from './Maps';
 import { FAB } from "react-native-paper";
 
-const ModalMaps = ({weatherData}) => {
-  if(Object.keys(weatherData).length === 0) return null;
+const ModalMaps = ({coordinates}) => {
+  if(Object.keys(coordinates).length === 0) return null;
 
-  const {lat, lon} = weatherData.coord;
+  //const {lat, lon} = weatherData.coord;
+  const {lat, lon} = coordinates;
   const [modalVisible, setModalVisible] = useState(false);
   
   return (

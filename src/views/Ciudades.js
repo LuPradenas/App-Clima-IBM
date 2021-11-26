@@ -59,7 +59,6 @@ const Ciudades = (props) => {
     try {
       const citiesFiltradas = citiesList.filter((city) => city !== e);
       setCityList( citiesFiltradas );
-      //guardarCitiesStorage(citiesFiltradas);
       guardarCitiesStorage(JSON.stringify(citiesFiltradas));
       console.log("Eliminado")
     } catch (error) {
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.primaryVariant,
     alignItems: "center",
-    marginTop: Platform.OS === 'ios' ?  40  : 20 ,
+    marginTop: Platform.OS === 'ios' ?  60  : 50 ,
   },
   safeContainer: {
     flex: 1,

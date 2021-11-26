@@ -18,6 +18,7 @@ const CardList = ({ city, eliminarCity, navigation}) => {
   const temperature = cityWeather?.main?.temp.toFixed()
   const condition1 = cityWeather?.weather?.[0].description
   const mainWeatherCondition = cityWeather?.weather?.[0]?.main
+  const coords = cityWeather?.coord
 
   const dialogoEliminar = city => {
     console.log('Eliminando...', city);
@@ -51,7 +52,7 @@ const CardList = ({ city, eliminarCity, navigation}) => {
         style={
           !cityWeather.error ? styles.cardContainer : styles.cardContainerError
         }
-        onPress={()=> navigation.jumpTo('Clima', { city } ) } // al precionar una card se cambia a la vista de Clima
+        onPress={()=> navigation.jumpTo('Clima', { city, coords } ) } // al presionar una card se cambia a la vista de Clima
       >
         <View style={styles.cardCityDetails}>
           <Text style={{ fontSize: 20, color: COLORS.onPrimary }}>
