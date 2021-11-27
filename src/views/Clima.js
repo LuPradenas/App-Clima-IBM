@@ -13,17 +13,15 @@ const Clima = (props) => {
     const [ cityName, setCityName ] = useState('');
     const [ weatherData, setWeatherData ] = useState('');
     const [ weekWeatherData, setWeekWeatherData ] = useState([]);
-    // const [ loading, setLoading ] = useState(false);
     const { route, navigation } =  props;
     const [coordinates , setCoordinates ] = useState([]);  
 
     useEffect(() => {
-        setCoordinates(route.params.coords)
-
+        
         if(props?.route?.params?.city){
+            setCoordinates(route.params.coords)
 
             console.log(props);
-            console.log(route.params.city);
             setCityName(route.params.city);
 
             const getWeather = async () => {
@@ -53,7 +51,9 @@ const Clima = (props) => {
                     }
                 });
                 const res = await instance.get();
-                setWeekWeatherData(res.data.list);
+                const { list } = res.data
+                console.log(list);
+                setWeekWeatherData(list);
             }
     
             getWeather();
@@ -92,10 +92,13 @@ const Clima = (props) => {
                     <View>
                         <WeatherDetails weatherData={weatherData}/>
                     </View>
-
-                    <View>
-                        <WeatherWeekTable weekWeatherData={weekWeatherData}/>
-                    </View>
+                    {
+                        weekWeatherData !== 0? 
+                        <View>
+                            <WeatherWeekTable weekWeatherData={weekWeatherData}/>
+                        </View>:
+                        null
+                    }
                         <ModalMaps 
                             coordinates={coordinates}
                         /> 

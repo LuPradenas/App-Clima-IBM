@@ -106,7 +106,7 @@ const Ciudades = (props) => {
           data={citiesList}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => <CardList navigation={navigation} city={item} eliminarCity={eliminarCity} />}
-          keyExtractor={({ item }) => item}
+          keyExtractor={( item ) => item}
         />
       </SafeAreaView>
     </View>
