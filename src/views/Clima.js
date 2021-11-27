@@ -16,6 +16,7 @@ const Clima = (props) => {
     const { route, navigation } =  props;
     const [coordinates , setCoordinates ] = useState([]);  
 
+    //si llegan parametros (o cambian) se usan para setear la ciudad y coordenadas
     useEffect(() => {
         
         if(props?.route?.params?.city){
@@ -24,6 +25,7 @@ const Clima = (props) => {
             console.log(props);
             setCityName(route.params.city);
 
+            //con el nombre de ciudad busca el clima del dia y los setea en el estado WeatherData
             const getWeather = async () => {
                 const instance = axios.create({
                     baseURL: `http://api.openweathermap.org/data/2.5/weather`,
@@ -39,7 +41,7 @@ const Clima = (props) => {
                 const {weather, main, coord, clouds} = res.data
                 setWeatherData({weather, main, coord, clouds});
             }
-    
+            //tambien con el nombre de ciudad busca el clima semanal y lo setea en WeekWeatherData
             const getWeekWeather = async () => {
                 const instance = axios.create({
                     baseURL: `http://api.openweathermap.org/data/2.5/forecast`,
@@ -62,13 +64,18 @@ const Clima = (props) => {
 
     }, [props]);
 
+    //funcion auxiliar para normalizar los nombres de las ciudades que llegan por parametros
     const getCityWithoutSpecialChars = (city) =>{
         return city.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     }
 
+    //opciones para parsear la fecha que llega en los datos
+    //"2021-11-27 12:00:00" => sabado 27 de nov, 12:00 hs
     const date = new Date();
-    const options = { weekday: 'long',year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }
+    const options = { weekday: 'long',year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
 
+    //retorna los componentes con la temperatura, los detalles del clima del momento de consulta
+    //y el componente con los datos del clima de la semana
     return (
         <ScrollView style={styles.container}>
             {cityName && props? 
@@ -104,7 +111,7 @@ const Clima = (props) => {
                         /> 
                 </>          
             :
-                
+                //si no hay seteada ninguna ciudad al principio te da un mensaje para volver a la vista de ciudades
                 <View style={styles.container_mensaje}>
                     <Text style={styles.mensaje}>Tienes que seleccionar una ciudad de la lista</Text>
                     <Button 
@@ -137,7 +144,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     mensaje: {
-        fontSize: 16
+        fontSize: 16,
+        textAlign: 'center'
     }
 })
 

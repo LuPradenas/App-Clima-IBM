@@ -30,11 +30,9 @@ const WeatherWeekTable = ({weekWeatherData}) => {
       day: d.toLocaleString('es-ES',{weekday: 'short'}),
       date: d.toLocaleString('es-ES',{month: 'numeric', day: 'numeric'}),
     }
-    // console.log(d.toLocaleString('es-ES',{weekday: 'short'}));
-    // console.log(d.toLocaleString('es-ES',{weekday: 'short'}));
-    // console.log(d.toLocaleString('es-ES',{hour: '2-digit', minute: '2-digit'}));
   }
 
+  //funcion auxiliar que de la lista de datos filtra la temperatura de cada dia a las 12:00 hs
   const filterDayTime = (arr) => {
     const newArr = arr.filter( el => {
       const d = new Date(el.time);
@@ -45,6 +43,7 @@ const WeatherWeekTable = ({weekWeatherData}) => {
     return newArr
   }
 
+  //cada componente que debe mostrar la FlatList
   const renderItem = ({item}) =>{
     const dateData = getDayTime(item.time);
     return (
@@ -60,6 +59,7 @@ const WeatherWeekTable = ({weekWeatherData}) => {
     )
   }
 
+  //retorna la lista semanal
   return (
     <Card style={styles.card}>
         <Card.Content>

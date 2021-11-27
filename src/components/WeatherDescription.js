@@ -3,13 +3,12 @@ import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
 import { Card } from 'react-native-paper';
 import { COLORS } from '../utils/colors';
 
+// Componente de que presenta la temperatura del momento
 const WeatherDescription = ({weatherData}) => {
     if(Object.keys(weatherData).length === 0) return null;
     const [description, setDescription] = useState('');
-    const [iconUri, setIconUri] = useState('');
 
     useEffect(() => {
-        setIconUri(`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`)
         setDescription(weatherData.weather[0].description);
     }, [])
 
@@ -21,7 +20,7 @@ const WeatherDescription = ({weatherData}) => {
                      <View style={styles.cardItem}>
                          <Image 
                             style={styles.logo}
-                            source={{ uri: iconUri }}
+                            source={{ uri: `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png` }}
                          />
                          <Text style={styles.numbers}>{Number.parseFloat(weatherData.main.temp).toFixed(1)} º C</Text>
                          <Text style={{color:'#fff', fontSize:20}}>{description}</Text>

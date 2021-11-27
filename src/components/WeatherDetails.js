@@ -2,6 +2,7 @@ import React, { useEffect, useState }from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 
+//componente que presenta los detalles como le sensacion termica, max y min
 const WeatherDetails = ({weatherData}) => {
 
     if(Object.keys(weatherData).length === 0) return null;
