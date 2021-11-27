@@ -15,9 +15,7 @@ En dispositivos Android no existe dicho problema y la persistencia de datos func
 
 ## Vídeo de muestra
 
-<iframe width="560" height="315"
-    src="https://www.youtube.com/embed/LILFY2P0aMg">
-</iframe>
+https://user-images.githubusercontent.com/59174208/143722310-aee2d919-205a-418c-bebd-4cd8ab4713ca.mp4
 
 ## Wireframes
 
