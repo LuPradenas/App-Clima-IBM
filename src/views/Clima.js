@@ -7,6 +7,7 @@ import WeatherDescription from '../components/WeatherDescription';
 import ModalMaps from '../components/ModalMaps';
 import { COLORS } from '../utils/colors';
 import WeatherWeekTable from '../components/WeatherWeekTable';
+import { FAB } from "react-native-paper";
 import { API_KEY } from '@env';
 
 const Clima = (props) => {
@@ -21,8 +22,6 @@ const Clima = (props) => {
         
         if(props?.route?.params?.city){
             setCoordinates(route.params.coords)
-
-            console.log(props);
             setCityName(route.params.city);
 
             //con el nombre de ciudad busca el clima del dia y los setea en el estado WeatherData
@@ -54,7 +53,6 @@ const Clima = (props) => {
                 });
                 const res = await instance.get();
                 const { list } = res.data
-                console.log(list);
                 setWeekWeatherData(list);
             }
     
@@ -88,9 +86,12 @@ const Clima = (props) => {
                     subtitleStyle={styles.subtitle}
                     />
                     </Appbar.Header>
-                    <Button onPress={()=> {
-                        props.navigation.jumpTo('Ciudades')
-                        }}>Volver</Button>
+                        <FAB 
+                            style={styles.fab}
+                            small
+                            label='Volver a Ciudades'
+                            onPress={()=> {props.navigation.jumpTo('Ciudades')}}
+                        />
 
                     <View>
                         <WeatherDescription weatherData={weatherData}/>
@@ -100,11 +101,13 @@ const Clima = (props) => {
                         <WeatherDetails weatherData={weatherData}/>
                     </View>
                     {
-                        weekWeatherData !== 0? 
-                        <View>
-                            <WeatherWeekTable weekWeatherData={weekWeatherData}/>
-                        </View>:
-                        null
+                        (weekWeatherData.length !== 0)
+                        ? 
+                            <View>
+                                <WeatherWeekTable weekWeatherData={weekWeatherData}/>
+                            </View>
+                        :
+                            null
                     }
                         <ModalMaps 
                             coordinates={coordinates}
@@ -114,10 +117,12 @@ const Clima = (props) => {
                 //si no hay seteada ninguna ciudad al principio te da un mensaje para volver a la vista de ciudades
                 <View style={styles.container_mensaje}>
                     <Text style={styles.mensaje}>Tienes que seleccionar una ciudad de la lista</Text>
-                    <Button 
-                        onPress={()=> {
-                            props.navigation.jumpTo('Ciudades')
-                        }}>Volver</Button>
+                        <FAB 
+                            style={styles.fab}
+                            small
+                            label='Volver a Ciudades'
+                            onPress={()=> {props.navigation.jumpTo('Ciudades')}}
+                        />
                 </View>
     
             }
@@ -128,7 +133,8 @@ const Clima = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: COLORS.primaryVariant
+        backgroundColor: COLORS.primaryVariant,
+        textAlign: 'center',
     },
     bar:{
         backgroundColor: "#007AFF"
@@ -144,9 +150,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     mensaje: {
+        marginVertical: 8,
         fontSize: 16,
         textAlign: 'center'
-    }
+    },
+    fab:{
+        backgroundColor: '#0071d4',
+        marginTop:10,
+        marginBottom:10,
+        width:250,
+        alignSelf: 'center'
+      }
 })
 
 export default Clima
